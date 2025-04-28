@@ -1,0 +1,13 @@
+# временный workflow, который один раз переместит файлы в корень
+name: move
+on: [push]
+jobs:
+  mv:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        shopt -s dotglob
+        mv diep-multiplayer/* .
+        rmdir diep-multiplayer
+    - run: echo "done"
